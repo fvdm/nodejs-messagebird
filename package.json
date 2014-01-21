@@ -1,0 +1,31 @@
+{
+  "author": {
+    "name":               "Franklin van de Meent",
+    "email":              "fr@nkl.in",
+    "url":                "https://frankl.in"
+  },
+  "name":                 "messagebird",
+  "description":          "Unofficial module for the MessageBird API.",
+  "version":              "1.0.0",
+  "repository": {
+    "type":               "git",
+    "url":                "git://github.com/fvdm/nodejs-messagebird.git"
+  },
+  "bugs": {
+    "url":                "https://github.com/fvdm/nodejs-messagebird/issues"
+  },
+  "main":                 "messagebird.js",
+  "dependencies": {
+    "node-xml2json":      ">=1.0.0 <2.0.0"
+  },
+  "devDependencies":      {},
+  "optionalDependencies": {},
+  "engines": {
+    "node":               "*"
+  },
+  "keywords":             ["messagebird", "sms", "api"],
+  "license": {
+    "type":               "Public Domain",
+    "url":                "https://github.com/fvdm/nodejs-messagebird/raw/master/LICENSE"
+  }
+}

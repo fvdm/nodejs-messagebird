@@ -104,3 +104,21 @@ messagebird.sms( 'MyName', '123', 'Hello', vars, myCallback )
 ```
 
 
+hlr ( recipients, [reference], callback )
+-----------------------------------------
+
+Lookup network information for one or more phone numbers.
+
+See [API documentation](https://www.messagebird.com/download/technical_documentation_nl.pdf)
+
+```
+recipients   required   Numbers to lookup, comma-seperated string or array.
+reference    option     String to be included http call from the API.
+callback     required   See Callback.
+```
+
+```js
+messagebird.hlr( '316987654321', 'user2', myCallback )
+```
+
+

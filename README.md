@@ -76,6 +76,8 @@ api http error    The API returned an HTTP error, see err.statusCode and err.bod
 sms ( sender, destination, body, [vars], callback )
 ---------------------------------------------------
 
+Send sms to one or multiple phone numbers.
+
 ```
 sender        required   Your name or number
 destination   required   Receiver(s), comma-separated string or array
@@ -92,6 +94,8 @@ messagebird.sms( 'MyName', [316123456789,316098765432], 'Hello world', myCallbac
 ### vars
 
 Object with additional settings for this SMS.
+
+See [API documentation](https://www.messagebird.com/download/technical_documentation_nl.pdf)
 
 ```js
 var vars = {

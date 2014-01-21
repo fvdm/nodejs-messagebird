@@ -66,7 +66,7 @@ npm should fix the dependencies for you.
 Callback & error handling
 -------------------------
 
-Each method below takes a callback _function_ as last parameter to receive the result status and data. This function received two parameters: `err` and `data`. When an error occurs `err` will be an instance of `Error` with stack trace and possibly additional properties and `data` won't be set. When everything is good `err` is _null_ and `data` whatever you're expecting.
+Each method below takes a callback _function_ as last parameter to receive the result status and data. This function receives two parameters: `err` and `data`. When an error occurs `err` will be an instance of `Error` with stack trace and possibly additional properties, `data` won't be set. When everything is good `err` is _null_ and `data` is the result.
 
 ```js
 function myCallback( err, data ) {

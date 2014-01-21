@@ -122,3 +122,17 @@ messagebird.hlr( '316987654321', 'user2', myCallback )
 ```
 
 
+credits ( callback )
+--------------------
+
+Get remaining credits in your account.
+
+```js
+messagebird.credits( console.log )
+```
+
+```js
+{ euros: 0, credits: 57.8 }
+```
+
+

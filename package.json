@@ -6,7 +6,7 @@
   },
   "name":                 "messagebird",
   "description":          "Unofficial module for the MessageBird API.",
-  "version":              "1.0.0",
+  "version":              "1.0.1",
   "repository": {
     "type":               "git",
     "url":                "git://github.com/fvdm/nodejs-messagebird.git"

@@ -35,6 +35,26 @@ timeout    option     Abort request after this amount of milliseconds.
 ```
 
 
+Usage
+-----
+
+```js
+var messagebird = require('messagebird')
+
+messagebird.username = 'myname'
+messagebird.password = 'mysecret'
+
+messagebird.credits( function( err, data ) {
+	if( ! err ) {
+		console.log( '€ '+ data.euro +' and '+ data.credits +' credits left' )
+	} else {
+		console.log( 'An error occured:' )
+		console.log( err )
+	}
+})
+```
+
+
 Dependencies
 ------------
 

@@ -1,5 +1,5 @@
-nodejs-messagebird
-==================
+messagebird
+===========
 
 Unofficial node.js module for the MessageBird API.
 

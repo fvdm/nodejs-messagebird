@@ -23,8 +23,8 @@ module.exports = {
 // Send SMS
 module.exports.sms = function (sender, destination, body, vars, callback) {
   if (typeof vars === 'function') {
-    var callback = vars;
-    var vars = {};
+    callback = vars;
+    vars = {};
   }
 
   if (typeof destination.join === 'function') {
@@ -40,12 +40,12 @@ module.exports.sms = function (sender, destination, body, vars, callback) {
   vars.responsetype = 'XML';
 
   talk ('sms', vars, callback);
-}
+};
 
 // HLR lookup
 module.exports.hlr = function (recipients, reference, callback) {
   if (typeof reference === 'function') {
-    var callback = reference;
+    callback = reference;
     reference = null;
   }
 
@@ -59,28 +59,28 @@ module.exports.hlr = function (recipients, reference, callback) {
   }
 
   talk ('hlr', vars, callback);
-}
+};
 
 // Credits
 module.exports.credits = function (callback) {
   talk('credits', callback);
-}
+};
 
 
 // Communicate
 function talk (path, fields, callback) {
   if (typeof fields === 'function') {
-    var callback = fields;
+    callback = fields;
   }
   if (typeof fields !== 'object') {
-    var fields = {};
+    fields = {};
   }
 
   // prevent multiple callbacks
-  var complete = false
+  var complete = false;
   function doCallback (err, res) {
     if (!complete) {
-      complete = true
+      complete = true;
       callback (err, res || null);
     }
   }
@@ -107,9 +107,10 @@ function talk (path, fields, callback) {
   // response
   request.on ('response', function (response) {
     var data = '';
+    var err = null;
 
     response.on ('data', function (ch) { data += ch; });
-    response.on ('close', function () { doCallback (new Error ('request closed')) });
+    response.on ('close', function () { doCallback (new Error ('request closed')); });
 
     response.on ('end', function () {
       if (response.statusCode === 200) {
@@ -117,7 +118,7 @@ function talk (path, fields, callback) {
           data = xml2json.parser (data);
           data = data.response.item || data;
           if (!data.credits && (data.responsecode != 1 || data.responsemessage !== 'OK')) {
-            var err = new Error ('api error');
+            err = new Error ('api error');
             err.statusCode = response.statusCode;
             err.responsecode = data.responsecode;
             err.responsemessage = data.responsemessage;
@@ -126,12 +127,12 @@ function talk (path, fields, callback) {
             doCallback (null, data);
           }
         } catch (e) {
-          var err = new Error ('api invalid');
+          err = new Error ('api invalid');
           err.error = e;
           doCallback (err);
         }
       } else {
-        var err = new Error ('api http error');
+        err = new Error ('api http error');
         err.statusCode = response.statusCode;
         err.body = data || null;
         doCallback (err);
@@ -141,14 +142,13 @@ function talk (path, fields, callback) {
 
   // error
   request.on ('error', function (error) {
+    var err = new Error ('request failed');
     if (error.code === 'ECONNRESET') {
-      var err = new Error ('request timeout');
-    } else {
-      var err = new Error ('request failed');
+      err = new Error ('request timeout');
     }
     err.error = error;
     doCallback (err);
-  })
+  });
 
   // timeout
   request.on ('socket', function (socket) {

@@ -9,9 +9,9 @@ License:       Unlicense / Public Domain
                (https://raw.github.com/fvdm/nodejs-messagebird/master/LICENSE)
 */
 
-var https = require('https').request;
-var querystring = require('querystring').stringify;
-var xml2json = require('node-xml2json');
+var https = require ('https').request;
+var querystring = require ('querystring').stringify;
+var xml2json = require ('node-xml2json');
 
 // Defaults
 module.exports = {

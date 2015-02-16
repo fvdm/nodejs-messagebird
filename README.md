@@ -9,6 +9,55 @@ MessageBird API client and server to process status reports and inbound VMN mess
 * [API documentation](https://www.messagebird.com/nl/developers)
 
 
+Examples
+--------
+
+### Client
+
+```js
+var messagebird = require ('messagebird');
+messagebird.settings.accesskey = 'live_abc123';
+
+// Send SMS message
+messagebird.client (
+  {
+    method: 'POST',
+    path:   '/messages',
+    fields: {
+      reference:  'ref-'+ parseInt (Date.now ()),
+      recipients: '31698765432,316123456789',
+      body:       'Hello world'
+    }
+  },
+  console.log
+);
+```
+
+
+### Server
+
+```js
+var messagebird = require ('messagebird');
+messagebird.settings.accesskey = 'live_abc123';
+
+// Setup
+var server = messagebird.server ({
+  port: 8080,
+  pathMessage: '/mbapi/message',
+  pathVMN: '/mvapi/vmn'
+});
+
+// Sent message status report
+server.on ('message', console.log);
+
+// Inbound message (VMN)
+server.on ('vmn', console.log);
+
+// start server
+server.listen();
+```
+
+
 Installation
 ------------
 

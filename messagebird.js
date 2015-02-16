@@ -25,7 +25,7 @@ module.exports = {
     accesskey: null
   },
   client: function (props, callback) {
-    return require ('./lib/client') (props, callback);
+    return require ('./lib/client') (props);
   },
   server: function (props) {
     return require ('./lib/server') (props);

@@ -61,8 +61,6 @@ server.listen();
 Installation
 ------------
 
-The best way is to install the [npm package](https://www.npmjs.com/package/messagebird).
-
 Stable: `npm install messagebird`
 
 Develop: `npm install fvdm/nodejs-messagebird#develop`
@@ -71,58 +69,50 @@ Develop: `npm install fvdm/nodejs-messagebird#develop`
 Configuration
 -------------
 
-param    | type    | required | description
----------|---------|----------|------------------------------------------------------
-username | string  | yes      | Your API username
-password | string  | yes      | Your API password
-timeout  | integer | no       | Abord request adter this amount of ms, default `5000`
+param     | type    | required | description
+----------|---------|----------|------------------------------------------------------
+accesskey | string  | no       | Your API access key, or set in client/server config
+timeout   | integer | no       | Abord request after this amount of ms, default `5000`
 
 
-Usage
------
-
-```js
-var messagebird = require ('messagebird');
-
-messagebird.username = 'myname';
-messagebird.password = 'mysecret';
-
-messagebird.credits (function (err, data) {
-  if (!err) {
-    console.log ('€ %s and %s credits left', data.euro, data.credits);
-  } else {
-    console.log ('An error occured:');
-    console.log (err);
-  }
-});
-```
-
-
-Dependencies
+Client usage
 ------------
 
-npm should fix the dependencies for you.
+The API client takes care of all communication with the MessageBird API. It is only one
+_function_ with one parameter _object_:
 
-* [node-xml2json](https://www.npmjs.com/package/node-xml2json) v1.0 - This is a small and fast library for XML to JSON translation.
 
+parameter | type     | required | default | description
+----------|----------|----------|---------|-------------------------------------------
+method    | string   | no       | GET     | GET or POST
+path      | string   | yes      |         | Request path, i.e. `/messages`
+fields    | object   | no       |         | Request fields, i.e. `{name: 'value'}`
+callback  | function | yes      |         | Function to process response, see [Callback](#callback) below
+          |          |          |         | 
+accesskey | string   | no       |         | API access key
+timeout   | integer  | no       | 5000    | Wait time in milliseconds
+iface     | string   | no       |         | Outbound network interface, i.e. `::ffff:12.34.56.78`
 
-Callback & error handling
--------------------------
-
-Each method below takes a callback _function_ as last parameter to receive the result status and data. This function receives two parameters: `err` and `data`. When an error occurs `err` will be an instance of `Error` with stack trace and possibly additional properties, `data` won't be set. When everything is good `err` is _null_ and `data` is the result.
 
 ```js
-function myCallback (err, data) {
-  if (err) {
-    console.log (err);
-    console.log (err.stack);
-  } else {
-    console.log(data);
-  }
-}
+var request = {
+  method: 'POST',
+  path: '/messages',
+  fields: {
+    reference: 'database-id',
+    recipients: 'number,number,number',
+    body: 'The message to send'
+  },
+  
+};
 
-messagebird.credits (myCallback);
+client ( request, callback );
 ```
+
+
+Server usage
+------------
+
 
 #### Errors
 

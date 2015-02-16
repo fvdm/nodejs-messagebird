@@ -41,10 +41,10 @@ var messagebird = require ('messagebird');
 messagebird.settings.accesskey = 'live_abc123';
 
 // Setup
+// Message endpoint: http://host.tld:8080/message
+// VMN API endpoint: http://host.tld:8080/vmn
 var server = messagebird.server ({
-  port: 8080,
-  pathMessage: '/mbapi/message',
-  pathVMN: '/mvapi/vmn'
+  port: 8080
 });
 
 // Sent message status report

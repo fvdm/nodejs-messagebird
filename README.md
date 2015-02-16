@@ -27,9 +27,9 @@ messagebird.client (
       reference:  'ref-'+ parseInt (Date.now ()),
       recipients: '31698765432,316123456789',
       body:       'Hello world'
-    }
-  },
-  console.log
+    },
+    callback: console.log
+  }
 );
 ```
 
@@ -70,9 +70,8 @@ Configuration
 -------------
 
 param     | type    | required | description
-----------|---------|----------|------------------------------------------------------
+----------|---------|----------|----------------------------------------------------
 accesskey | string  | no       | Your API access key, or set in client/server config
-timeout   | integer | no       | Abord request after this amount of ms, default `5000`
 
 
 Client usage
@@ -103,7 +102,7 @@ var request = {
     recipients: 'number,number,number',
     body: 'The message to send'
   },
-  
+  callback: console.log
 };
 
 client ( request, callback );
@@ -124,70 +123,6 @@ request closed  | The request ended too early, no data processed
 api error       | The API returned an error, see `err.resultcode` and `err.resultmessage`
 api invalid     | The API returned something unreadable
 api http error  | The API returned an HTTP error, see `err.statusCode` and `err.body`
-
-
-sms ( sender, destination, body, [vars], callback )
----------------------------------------------------
-
-Send sms to one or multiple phone numbers.
-
-param       | type     | required | description
-------------|----------|----------|---------------------------------------------
-sender      | string   | yes      | Your name or number
-destination | array    | yes      | Receiver(s)
-body        | string   | yes      | The message
-vars        | object   | no       | More settings, see below.
-callback    | function | yes      | See [Callback](#callback-error-handling)
-
-```js
-messagebird.sms ('MyName', [316123456789,316098765432], 'Hello world', myCallback);
-```
-
-
-#### vars
-
-Object with additional settings for this SMS.
-
-```js
-var vars = {
-  timestamp: '201401201803',
-  reference: 'message1',
-  gateway_id: 2
-};
-
-messagebird.sms ('MyName', '123', 'Hello', vars, myCallback);
-```
-
-
-hlr ( recipients, [reference], callback )
------------------------------------------
-
-Lookup network information for one or more phone numbers.
-
-param      | type     | required | description
------------|----------|----------|------------------------------------------------
-recipients | array    | yes      | Number to lookup
-reference  | string   | no       | String to be included in http call from the API
-callback   | function | yes      | See [Callback](#callback-error-handling)
-
-
-```js
-messagebird.hlr ('316987654321', 'user2', myCallback);
-```
-
-
-credits ( callback )
---------------------
-
-Get remaining credits in your account.
-
-```js
-messagebird.credits (console.log);
-```
-
-```js
-{ euros: 0, credits: 57.8 }
-```
 
 
 License

@@ -152,7 +152,7 @@ function talk (path, fields, callback) {
 
   // timeout
   request.on ('socket', function (socket) {
-    socket.setTimeout (module.exports.timeout);
+    socket.setTimeout (parseInt (module.exports.timeout));
     socket.on ('timeout', function () {
       request.abort ();
     });

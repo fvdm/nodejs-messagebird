@@ -4,6 +4,7 @@ var util = require ('util');
 // Setup
 // set env MESSAGEBIRD_ACCESSKEY= MESSAGEBIRD_TIMEOUT= (Travis CI)
 var app = require ('./');
+app.settings.accesskey = process.env.MESSAGEBIRD_ACCESSKEY || null;
 
 // handle exits
 var errors = 0;

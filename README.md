@@ -1,12 +1,12 @@
 messagebird
 ===========
 
-Unofficial node.js module for the MessageBird API.
+MessageBird API client and server to process status reports and inbound VMN messages.
 
 [![Build Status](https://travis-ci.org/fvdm/nodejs-messagebird.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-messagebird)
 
 * [MessageBird](https://www.messagebird.com/)
-* [API documentation](https://www.messagebird.com/download/technical_documentation_nl.pdf)
+* [API documentation](https://www.messagebird.com/nl/developers)
 
 
 Installation

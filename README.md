@@ -124,7 +124,7 @@ var request = {
   callback: console.log
 };
 
-client ( request, callback );
+messagebird.client (request);
 ```
 
 

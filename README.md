@@ -59,6 +59,20 @@ server.listen();
 ```
 
 
+Index
+-----
+
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [.client](#client--parameters-)
+* [.server](#server--configuration-)
+  ([Configuration](#configuration-1),
+   [Events](#events),
+   [Errors](#errors))
+* [License](#license)
+* [Author](#author)
+
+
 Installation
 ------------
 

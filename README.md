@@ -128,6 +128,18 @@ messagebird.client (request);
 ```
 
 
+##### Errors
+
+message         | description
+----------------|------------------------------------
+request failed  | There was an error, see `err.error`
+request timeout | The request took too long to process, see [Configuration](#configuration)
+request closed  | The request ended too early, no data processed
+api error       | The API returned an error, see `err.resultcode` and `err.resultmessage`
+api invalid     | The API returned something unreadable
+api http error  | The API returned an HTTP error, see `err.statusCode` and `err.body`
+
+
 .server ( configuration )
 -------
 
@@ -252,13 +264,6 @@ server.on ('error', console.error);
 ##### Errors
 
 message         | description
-----------------|------------------------------------
-request failed  | There was an error, see `err.error`
-request timeout | The request took too long to process, see [Configuration](#configuration)
-request closed  | The request ended too early, no data processed
-api error       | The API returned an error, see `err.resultcode` and `err.resultmessage`
-api invalid     | The API returned something unreadable
-api http error  | The API returned an HTTP error, see `err.statusCode` and `err.body`
 
 
 License

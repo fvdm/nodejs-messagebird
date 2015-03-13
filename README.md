@@ -264,6 +264,10 @@ server.on ('error', console.error);
 ##### Errors
 
 message         | description
+----------------|------------------------------------------
+request denied  | Inbound IP is not on whitelist
+request timeout | Inbound request took too long to complete
+request error   | Inbound request failed
 
 
 License

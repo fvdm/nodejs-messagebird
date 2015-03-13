@@ -156,9 +156,9 @@ iface        | string  | no       |            | Interface or IP to listen on
 protocol     | string  | no       | `http`     | `http` or `https`
 accesskey    | string  | no       |            | Override [global accesskey](#configuration) setting
 timeout      | integer | no       | `5000`     | Wait time in ms
-path_message | string  | no       | `/message` | Request endpoint to receive API requests on
-path_vmn     | string  | no       | `/vmn`     | Request endpoint to receive API requests on
-path_hlr     | string  | no       | `/hlr`     | Request endpoint to receive API requests on
+path_message | string  | no       | `/message` | Endpoint to receive API requests on
+path_vmn     | string  | no       | `/vmn`     | Endpoint to receive API requests on
+path_hlr     | string  | no       | `/hlr`     | Endpoint to receive API requests on
 tlsKey       | string  | no       |            | TLS/SSL certificate key (PEM)
 tlsCert      | string  | no       |            | TLS/SSL certificate (PEM)
 whitelist    | string  | no       | (all)      | List of IP-addresses to allow access

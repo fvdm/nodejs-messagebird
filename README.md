@@ -109,8 +109,125 @@ client ( request, callback );
 ```
 
 
-Server usage
-------------
+.server ( configuration )
+-------
+
+
+### Configuration
+
+name      | type    | required | default | description
+----------|---------|----------|---------|------------
+port      | integer | no       | 8080    | Port (tcp) to listen on
+iface     | string  | no       |         | Interface or IP to listen on
+protocol  | string  | no       | http    | `http` or `https`
+accesskey | string  | no       |         | Override global accesskey setting 
+tlsKey    | string  | no       |         | TLS/SSL certificate key (PEM)
+tlsCert   | string  | no       |         | TLS/SSL certificate (PEM)
+whitelist | string  | no       | (all)   | List of IP-addresses to allow access
+
+
+### Events
+
+The server emits events on activity and errors.
+Bind to these events to process data.
+
+
+#### message
+
+Text message status report.
+
+
+```js
+function messageStatus (status) {
+  console.log (
+    '%s - SMS %s to %s is %s',
+    status.statusDatetime,
+    status.reference,
+    status.recipient,
+    status.status
+  );
+}
+
+server.on ('message', messageStatus);
+```
+
+
+#### vmn
+
+Inbound text message.
+
+
+```js
+function incomingMessage (message) {
+  console.log (
+    '%s - %s - Message from %s',
+    message.createdDatetime,
+    message.id,
+    message.originator
+  );
+
+  console.log (message.body);
+}
+
+server.on ('vmn', incomingMessage);
+```
+
+
+#### hlr
+
+HLR lookup response.
+
+
+```js
+function hlrResult (hlr) {
+  console.log (
+    'HLR for %s %s: %s',
+    hlr.msisdn,
+    hlr.status,
+    hlr.network
+  );
+}
+
+server.on ('hlr', hlrResult);
+```
+
+
+#### listen
+
+Server is listening for incoming connections.
+
+
+```js
+function serverReady (listen) {
+  console.log (
+    'Server is listening on %s and port %s',
+    listen.localAddress,
+    listen.localPort
+  );
+}
+
+server.on ('listen', serverReady);
+```
+
+
+#### notice
+
+Informational log.
+
+
+```js
+server.on ('notice', console.info);
+````
+
+
+#### error
+
+Error log.
+
+
+```js
+server.on ('error', console.error);
+```
 
 
 #### Errors

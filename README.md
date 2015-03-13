@@ -155,6 +155,7 @@ port         | integer | no       | `8080`     | Port (tcp) to listen on
 iface        | string  | no       |            | Interface or IP to listen on
 protocol     | string  | no       | `http`     | `http` or `https`
 accesskey    | string  | no       |            | Override [global accesskey](#configuration) setting
+timeout      | integer | no       | `5000`     | Wait time in ms
 path_message | string  | no       | `/message` | Request endpoint to receive API requests on
 path_vmn     | string  | no       | `/vmn`     | Request endpoint to receive API requests on
 path_hlr     | string  | no       | `/hlr`     | Request endpoint to receive API requests on

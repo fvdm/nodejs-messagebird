@@ -65,10 +65,13 @@ Index
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [.client](#client--parameters-)
+  ([Parameters](#parameters),
+   [Example](#example),
+   [Errors](#errors))
 * [.server](#server--configuration-)
   ([Configuration](#configuration-1),
    [Events](#events),
-   [Errors](#errors))
+   [Errors](#errors-1))
 * [License](#license)
 * [Author](#author)
 

@@ -42,7 +42,8 @@ messagebird.settings.accesskey = 'live_abc123';
 
 // Setup
 // Message endpoint: http://host.tld:8080/message
-// VMN API endpoint: http://host.tld:8080/vmn
+// VMN endpoint: http://host.tld:8080/vmn
+
 var server = messagebird.server ({
   port: 8080
 });
@@ -74,15 +75,17 @@ param     | type    | required | description
 accesskey | string  | no       | Your API access key, or set in client/server config
 
 
-Client usage
-------------
+.client ( parameters )
+-------
 
-The API client takes care of all communication with the MessageBird API. It is only one
-_function_ with one parameter _object_:
+The API client takes care of all communication with the MessageBird API.
+It is only one _function_ with one parameter _object_:
 
+
+### Parameters
 
 parameter | type     | required | default | description
-----------|----------|----------|---------|-------------------------------------------
+----------|----------|----------|---------|---------------------------------------
 method    | string   | no       | GET     | GET or POST
 path      | string   | yes      |         | Request path, i.e. `/messages`
 fields    | object   | no       |         | Request fields, i.e. `{name: 'value'}`
@@ -92,6 +95,8 @@ accesskey | string   | no       |         | API access key
 timeout   | integer  | no       | 5000    | Wait time in milliseconds
 iface     | string   | no       |         | Outbound network interface, i.e. `::ffff:12.34.56.78`
 
+
+### Example
 
 ```js
 var request = {
@@ -230,10 +235,10 @@ server.on ('error', console.error);
 ```
 
 
-#### Errors
+##### Errors
 
 message         | description
-----------------|--------------------------------------------------------------------------
+----------------|------------------------------------
 request failed  | There was an error, see `err.error`
 request timeout | The request took too long to process, see [Configuration](#configuration)
 request closed  | The request ended too early, no data processed

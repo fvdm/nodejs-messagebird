@@ -72,11 +72,32 @@ function doTest (err, label, tests) {
 }
 
 
+// ! API error
+queue.push (function () {
+  app.client ({
+    method: 'POST',
+    path: '/messages',
+    fields: {
+      foo: 'bar'
+    },
+    callback: function (err) {
+      doTest (null, 'API error', [
+        ['type', err && err instanceof Error],
+        ['message', err && err.message === 'api error'],
+        ['code', err && typeof err.httpCode === 'number'],
+        ['errors', err && errors]
+      ]);
+    }
+  });
+});
+
+
 // ! Client tests
 queue.push (function () {
   var msg = {
       reference: ref,
       recipients: ['31352100539'],
+      originator: 'nodeJS',
       body: 'Testing message '+ ref
   };
 

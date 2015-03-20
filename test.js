@@ -85,7 +85,7 @@ queue.push (function () {
         ['type', err && err instanceof Error],
         ['message', err && err.message === 'api error'],
         ['code', err && typeof err.httpCode === 'number'],
-        ['errors', err && err.errors]
+        ['errors', err && err.errors instanceof Array]
       ]);
     }
   });

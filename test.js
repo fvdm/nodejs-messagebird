@@ -97,7 +97,7 @@ queue.push (function () {
   var ref = 'msg_'+ Date.now ();
   var msg = {
       reference: ref,
-      recipients: ['31352100539'],
+      recipients: '31612345678',
       originator: 'nodeJS',
       body: 'Testing message '+ ref
   };
@@ -107,12 +107,11 @@ queue.push (function () {
     path: '/messages',
     fields: msg,
     callback: function (err, data) {
-      var rec = data && data.recipients && data.recipients.items;
       doTest (err, 'POST message', [
         ['type', data && typeof data === 'object'],
         ['reference', data && data.reference === ref],
         ['body', data && data.body === msg.body],
-        ['recipients', rec && rec [0] && rec [0].recipient === msg.recipients [0]]
+        ['recipients', data.recipients.items[0].recipient == msg.recipients]
       ]);
     }
   });

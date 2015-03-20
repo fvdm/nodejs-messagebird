@@ -94,6 +94,7 @@ queue.push (function () {
 
 // ! Client tests
 queue.push (function () {
+  var ref = 'msg_'+ Date.now ();
   var msg = {
       reference: ref,
       recipients: ['31352100539'],
@@ -101,7 +102,6 @@ queue.push (function () {
       body: 'Testing message '+ ref
   };
 
-  var ref = 'msg_'+ Date.now ();
   app.client ({
     method: 'POST',
     path: '/messages',
@@ -110,7 +110,7 @@ queue.push (function () {
       var rec = data && data.recipients && data.recipients.items;
       doTest (err, 'POST message', [
         ['type', data && typeof data === 'object'],
-        ['reference', data && data.reference === msg.reference],
+        ['reference', data && data.reference === ref],
         ['body', data && data.body === msg.body],
         ['recipients', rec && rec [0] && rec [0].recipient === msg.recipients [0]]
       ]);

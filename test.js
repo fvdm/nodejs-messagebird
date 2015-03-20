@@ -47,7 +47,7 @@ function doNext () {
 function doTest (err, label, tests) {
   if (err instanceof Error) {
     console.error (label +': \033[1m\033[31mERROR\033[0m\n');
-    console.error (util.inspect (err, false, 10, true));
+    console.error (util.inspect (err, {depth: 10, colors: true}));
     console.log ();
     console.error (err.stack);
     console.log ();
@@ -55,8 +55,8 @@ function doTest (err, label, tests) {
   } else {
     var testErrors = [];
     tests.forEach (function (test) {
-      if (test[1] !== true) {
-        testErrors.push (test[0]);
+      if (test [1] !== true) {
+        testErrors.push (test [0]);
         errors++;
       }
     });
@@ -101,7 +101,6 @@ queue.push (function () {
       originator: 'nodeJS',
       body: 'Testing message '+ ref
   };
-
   app.client ({
     method: 'POST',
     path: '/messages',

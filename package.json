@@ -1,12 +1,12 @@
 {
   "author": {
-    "name":               "Franklin van de Meent",
-    "email":              "fr@nkl.in",
-    "url":                "https://frankl.in"
+    "name":               "MessageBird",
+    "email":              "joey@messagebird.com",
+    "url":                "http://messagebird.com/"
   },
   "name":                 "messagebird",
   "description":          "Unofficial module for the MessageBird API.",
-  "version":              "1.0.1",
+  "version":              "1.0.2",
   "repository": {
     "type":               "git",
     "url":                "git://github.com/fvdm/nodejs-messagebird.git"
